@@ -3,8 +3,10 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 
+
 class Thought(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=128)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -14,6 +16,7 @@ class Thought(models.Model):
     class Meta:
         db_table = 'Thought'
 
+    
 class Idea(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     description = models.TextField()
@@ -34,8 +37,8 @@ class Link(models.Model):
 
 
 class Tag(models.Model):
-    thought = models.ManyToManyField(Thought)
-    name = models.CharField(max_length=100)
+    thoughts = models.ManyToManyField(Thought, related_name='tags')
+    name = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
