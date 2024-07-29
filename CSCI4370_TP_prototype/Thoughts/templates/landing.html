@@ -1,0 +1,45 @@
+<!-- landing.html -->
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Landing Page</title>
+    <link href="{% static 'css/custom_landing.css' %}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+        <header class="masthead" class="masthead mt-auto">
+            <div class="inner">
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <h5 class="masthead-brand">
+                            <strong>ThinkMap</strong>
+                        </h5>
+                        <a class="nav-link active" href="{% url 'login' %}"><strong>Sign-In</strong></a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading"><strong>Your Ideas, Documents, &<br> Plans. Unified. Welcome<br> to <u>ThinkMap</u>!</strong></h1>
+            <p class="lead">This is some description</p>
+            <a href="{% url 'main' %}" class="btn btn-dark" role="button">Enter Thinkmap</a>
+            <p class="lead"><img src="{% static 'images/landing.png' %}" alt="Landing Image" class="img-fluid" style="width: 30%;"></p>
+        </main>
+        <footer id="footer" class="footer mt-auto">
+            <div class="inner">
+                <p>
+                    Built By Garison Zagorski, Austin, Ben
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
