@@ -1,0 +1,61 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+header {
+    display: inline;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+html, body {
+    height: 100%;
+}
+
+.mb-auto, .my-auto {
+    margin-bottom: auto !important;
+}
+
+/* Custom CSS for Landing Page */
+
+/* Header Styles */
+header {
+    padding: 20px 0; /* Padding for spacing */
+    border-bottom: 1px solid #dee2e6; /* Bottom border */
+    margin-bottom: 30px;
+    padding: 10px 15%;
+}
+
+/* Main Content Styles */
+#main-content {
+    background-color: #ffffff; /* White background for main content */
+    padding: 40px 0; /* Padding for spacing */
+    border-bottom: 1px solid #dee2e6; /* Bottom border */
+}
+
+/* Footer Styles */
+#footer {
+    padding: 20px 0; /* Padding for spacing */
+    border-top: 1px solid #dee2e6; /* Top border */
+}
+
+/* Additional Spacing */
+.masthead {
+    margin-bottom: 30px;
+}
+
+.inner.cover {
+    margin-bottom: 30px;
+}
+
+.footer {
+    margin-top: 30px;
+}
+
+

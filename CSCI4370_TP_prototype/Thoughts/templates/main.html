@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Landing Page</title>
+    <link href="{% static 'css/custom_main.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <div class="flex-shrink-0 p-3" id="sidebar">
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle btn-dark" id="dropdownUser1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://img.icons8.com/?size=100&id=kqAnkEVznLts&format=png&color=000000" alt="" width="32"
+                        height="32" class="rounded-circle me-2">
+                    <strong class="text-black">User</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'landing' %}">Sign out</a></li>
+                </ul>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#home"></use>
+                        </svg>
+                        <a href=""><img src="https://img.icons8.com/?size=21&id=86527&format=png&color=000000" alt="">Home</a>
+                    
+                </li>
+                <li class="nav-item">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#home"></use>
+                        </svg>
+                        <a href=""><img src="https://img.icons8.com/?size=21&id=11153&format=png&color=000000" alt="">New Note</a>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-grow-1 p-3" id="main-content">
+            <!-- Main content here -->
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
