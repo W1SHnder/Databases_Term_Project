@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Thoughts.models import *
 from django.db.models import Q
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 
@@ -21,6 +23,7 @@ def filter_by_tag(tag, current_user):
     ).prefetch_related('tags')
     return filtered_rows
 
+
 def get_popular_tags():
     tags = Tag.objects.annotate(
         num_thoughts=models.Count('thoughts')
@@ -36,6 +39,16 @@ def landing(request):
     return render(request, 'landing.html', {})
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('form3Example3c')
+        password = request.POST.get('form3Example4c')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main')
+        else: 
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+        
     return render(request, 'login.html')
 
 def signup(request):
