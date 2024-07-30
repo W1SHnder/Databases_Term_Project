@@ -5,6 +5,7 @@ urlpatterns = [
     path("", views.landing, name="landing"),
     path("login", views.login, name="login"),
     path("signup", views.signup, name="signup"),
-    path("main", views.main, name="main"),
+    path("main", views.MainView.as_view(), name="main"),
+    #path("main", views.main, name="main"),
 
 ]
