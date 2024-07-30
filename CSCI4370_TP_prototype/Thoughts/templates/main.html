@@ -47,6 +47,9 @@
         </div>
         <div class="flex-grow-1 p-3" id="main-content">
             <!-- Main content here -->
+             {% for object in objects %}
+             <li>{{object}}</li>
+            {% endfor %}
         </div>
     </div>
 </body>

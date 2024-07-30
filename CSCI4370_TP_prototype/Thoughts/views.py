@@ -3,6 +3,9 @@ from Thoughts.models import *
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.views.generic import TemplateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.http import require_http_methods
 
 
 
@@ -11,7 +14,7 @@ from django.contrib import messages
 def filter_thoughts_by_keyword(keyword, qset):
     filtered_rows = qset.objects.filter(
         Q(title__icontains=keyword) | Q(content__icontains=keyword)
-        ).prefetch_related('tags')
+        )
     return filtered_rows
 
 #Accepts a tag ID or object and returns all thoughts with that tag
@@ -32,9 +35,6 @@ def get_popular_tags():
 
 
 
-
-
-
 def landing(request):
     return render(request, 'landing.html', {})
 
@@ -51,6 +51,7 @@ def login(request):
         
     return render(request, 'login.html')
 
+@require_http_methods(["GET", "POST"])
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -67,5 +68,15 @@ def signup(request):
             return redirect('login')
     return render(request, 'signup.html')
 
-def main(request):
-    return render(request, 'main.html', {})
+class MainView(LoginRequiredMixin, ListView):
+    template_name = 'main.html'
+    login_url = "/login"
+
+    def get_queryset(self):
+        return Thought.objects.filter(Q(user=self.request.user) | Q(public=True)).prefetch_related('tags')
+
+    
+
+
+#def main(request):
+  #  return render(request, 'main.html', {})
